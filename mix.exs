@@ -10,13 +10,17 @@ defmodule Epoch.MixProject do
       deps: deps(),
       description: "A library that converts between epoch and native Elixir DateTime",
       package: package(),
-      source_url: "https://github.com/jsmestad/epoch.ex"
+      source_url: "https://github.com/jsmestad/epoch.ex",
+      docs: [
+        main: "Epoch",
+        extras: ["README.md", "CHANGELOG.md"]
+      ]
     ]
   end
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README.md", "LICENSE"],
+      files: ["lib", "mix.exs", "README.md", "LICENSE", "CHANGELOG.md"],
       maintainers: ["Justin Smestad"],
       licenses: ["Apache-2.0"],
       links: %{"Github" => "https://github.com/jsmestad/epoch.ex"}
