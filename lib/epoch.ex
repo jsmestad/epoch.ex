@@ -4,6 +4,22 @@ defmodule Epoch do
   """
 
   @doc """
+  Returns the current time in epoch format.
+  """
+  @spec now :: integer
+  def now do
+    DateTime.utc_now() |> DateTime.to_unix()
+  end
+
+  @doc """
+  Returns the current time in epoch format with millisecond resolution.
+  """
+  @spec now(:microsecond) :: String.t()
+  def now(:microsecond) do
+    cast(DateTime.utc_now())
+  end
+
+  @doc """
   Accepts a DateTime and converts it to epoch with microseconds.
 
   ## Examples
