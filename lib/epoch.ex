@@ -1,10 +1,9 @@
 defmodule Epoch do
   @type epoch :: integer
   @type epoch_in_ms :: String.t()
-  @type datetime :: DateTime.t()
 
   @moduledoc """
-  Conversion between Elixir native `DateTime.t/0` and epoch formats.
+  Conversion between Elixir native `DateTime` and epoch formats.
   """
 
   @doc """
@@ -24,7 +23,7 @@ defmodule Epoch do
   end
 
   @doc """
-  Accepts a DateTime and converts it to epoch with microseconds.
+  Accepts a `DateTime` and converts it to epoch with microseconds.
 
   ## Examples
 
@@ -35,14 +34,14 @@ defmodule Epoch do
       "1608431189.000000"
 
   """
-  @spec cast(datetime) :: epoch_in_ms
+  @spec cast(DateTime.t()) :: epoch_in_ms
   def cast(%DateTime{} = time) do
     epoch_in_ms = DateTime.to_unix(time, :microsecond)
     :erlang.float_to_binary(epoch_in_ms / 1_000_000.00, decimals: 6)
   end
 
   @doc """
-  Returns seconds since epoch for the given `DateTime.t/0`.
+  Returns seconds since epoch for the given `DateTime`.
 
   ## Examples
 
@@ -53,13 +52,13 @@ defmodule Epoch do
       1608431189
 
   """
-  @spec seconds_since(datetime) :: epoch
+  @spec seconds_since(DateTime.t()) :: epoch
   def seconds_since(%DateTime{} = time) do
     DateTime.to_unix(time, :second)
   end
 
   @doc """
-  Converts an epoch with microseconds to a `DateTime.t/0`
+  Converts an epoch with microseconds to a `DateTime`
 
   ## Examples
 
@@ -73,7 +72,7 @@ defmodule Epoch do
       ~U[2020-12-20 02:26:29Z]
 
   """
-  @spec to_datetime(epoch_in_ms | epoch) :: datetime
+  @spec to_datetime(epoch_in_ms | epoch) :: DateTime.t()
   def to_datetime(epoch) when is_binary(epoch) do
     if String.contains?(epoch, ".") do
       epoch

@@ -1,6 +1,6 @@
 # Epoch
 
-Conversion between Elixir native `DateTime.t/0` and epoch formats.
+Conversion between Elixir native `DateTime` and epoch formats.
 
 ## Installation
 
