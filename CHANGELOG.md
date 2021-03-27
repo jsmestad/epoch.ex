@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2021-03-27
+### Added
+- `Epoch.seconds_since/1` returns the seconds since the epoch.
+- Add typespec definitions.
+
 ## [1.1.0] - 2021-02-21
 ### Added
 - `Epoch.now/0` returns the current time in Epoch format
